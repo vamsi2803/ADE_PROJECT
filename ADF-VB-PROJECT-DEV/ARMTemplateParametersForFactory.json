@@ -1,0 +1,84 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ADF-VB-PROJECT-DEV"
+		},
+		"LS_BULK_SINK_accountKey": {
+			"value": ""
+		},
+		"LS_BULK_SOURCE_accountKey": {
+			"value": ""
+		},
+		"LS_CSV_SINK_accountKey": {
+			"value": ""
+		},
+		"LS_CSV_SOURCE_accountKey": {
+			"value": ""
+		},
+		"LS_EXCEL_SINK_accountKey": {
+			"value": ""
+		},
+		"LS_EXCEL_SOURCE_accountKey": {
+			"value": ""
+		},
+		"LS_JSON_SINK_accountKey": {
+			"value": ""
+		},
+		"LS_JSON_SOURCE_accountKey": {
+			"value": ""
+		},
+		"LS_RESTAPI_SINK_accountKey": {
+			"value": ""
+		},
+		"LS_SQLSERVER_SINK_accountKey": {
+			"value": ""
+		},
+		"LS_SQLSERVER_SOURCE_password": {
+			"value": ""
+		},
+		"LS_BULK_SINK_properties_typeProperties_url": {
+			"value": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_BULK_SOURCE_properties_typeProperties_url": {
+			"value": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		},
+		"LS_CSV_SINK_properties_typeProperties_url": {
+			"value": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_CSV_SOURCE_properties_typeProperties_url": {
+			"value": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		},
+		"LS_EXCEL_SINK_properties_typeProperties_url": {
+			"value": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_EXCEL_SOURCE_properties_typeProperties_url": {
+			"value": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		},
+		"LS_JSON_SINK_properties_typeProperties_url": {
+			"value": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_JSON_SOURCE_properties_typeProperties_url": {
+			"value": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		},
+		"LS_RESTAPI_SINK_properties_typeProperties_url": {
+			"value": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_RESTAPI_SOURCE_properties_typeProperties_url": {
+			"value": "https://retoolapi.dev/svSm9V/data"
+		},
+		"LS_SQLSERVER_SINK_properties_typeProperties_url": {
+			"value": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_SQLSERVER_SOURCE_properties_typeProperties_server": {
+			"value": "DESKTOP-LOPJ9D0\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_SOURCE_properties_typeProperties_database": {
+			"value": "vbadeproject"
+		},
+		"LS_SQLSERVER_SOURCE_properties_typeProperties_userName": {
+			"value": "vblearning"
+		}
+	}
+}

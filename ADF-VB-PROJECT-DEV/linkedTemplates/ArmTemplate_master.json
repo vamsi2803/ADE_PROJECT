@@ -1,0 +1,237 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "ADF-VB-PROJECT-DEV"
+		},
+		"LS_BULK_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_BULK_SINK'"
+		},
+		"LS_BULK_SOURCE_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_BULK_SOURCE'"
+		},
+		"LS_CSV_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_CSV_SINK'"
+		},
+		"LS_CSV_SOURCE_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_CSV_SOURCE'"
+		},
+		"LS_EXCEL_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_EXCEL_SINK'"
+		},
+		"LS_EXCEL_SOURCE_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_EXCEL_SOURCE'"
+		},
+		"LS_JSON_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_JSON_SINK'"
+		},
+		"LS_JSON_SOURCE_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_JSON_SOURCE'"
+		},
+		"LS_RESTAPI_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_RESTAPI_SINK'"
+		},
+		"LS_SQLSERVER_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SQLSERVER_SINK'"
+		},
+		"LS_SQLSERVER_SOURCE_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_SOURCE'"
+		},
+		"LS_BULK_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_BULK_SOURCE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		},
+		"LS_CSV_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_CSV_SOURCE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		},
+		"LS_EXCEL_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_EXCEL_SOURCE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		},
+		"LS_JSON_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_JSON_SOURCE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		},
+		"LS_RESTAPI_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_RESTAPI_SOURCE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://retoolapi.dev/svSm9V/data"
+		},
+		"LS_SQLSERVER_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_SQLSERVER_SOURCE_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-LOPJ9D0\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_SOURCE_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "vbadeproject"
+		},
+		"LS_SQLSERVER_SOURCE_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "vblearning"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ADF-VB-PROJECT-DEV_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_BULK_SINK_accountKey": {
+						"value": "[parameters('LS_BULK_SINK_accountKey')]"
+					},
+					"LS_BULK_SOURCE_accountKey": {
+						"value": "[parameters('LS_BULK_SOURCE_accountKey')]"
+					},
+					"LS_CSV_SINK_accountKey": {
+						"value": "[parameters('LS_CSV_SINK_accountKey')]"
+					},
+					"LS_CSV_SOURCE_accountKey": {
+						"value": "[parameters('LS_CSV_SOURCE_accountKey')]"
+					},
+					"LS_EXCEL_SINK_accountKey": {
+						"value": "[parameters('LS_EXCEL_SINK_accountKey')]"
+					},
+					"LS_EXCEL_SOURCE_accountKey": {
+						"value": "[parameters('LS_EXCEL_SOURCE_accountKey')]"
+					},
+					"LS_JSON_SINK_accountKey": {
+						"value": "[parameters('LS_JSON_SINK_accountKey')]"
+					},
+					"LS_JSON_SOURCE_accountKey": {
+						"value": "[parameters('LS_JSON_SOURCE_accountKey')]"
+					},
+					"LS_RESTAPI_SINK_accountKey": {
+						"value": "[parameters('LS_RESTAPI_SINK_accountKey')]"
+					},
+					"LS_SQLSERVER_SINK_accountKey": {
+						"value": "[parameters('LS_SQLSERVER_SINK_accountKey')]"
+					},
+					"LS_BULK_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_BULK_SINK_properties_typeProperties_url')]"
+					},
+					"LS_BULK_SOURCE_properties_typeProperties_url": {
+						"value": "[parameters('LS_BULK_SOURCE_properties_typeProperties_url')]"
+					},
+					"LS_CSV_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_CSV_SINK_properties_typeProperties_url')]"
+					},
+					"LS_CSV_SOURCE_properties_typeProperties_url": {
+						"value": "[parameters('LS_CSV_SOURCE_properties_typeProperties_url')]"
+					},
+					"LS_EXCEL_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_EXCEL_SINK_properties_typeProperties_url')]"
+					},
+					"LS_EXCEL_SOURCE_properties_typeProperties_url": {
+						"value": "[parameters('LS_EXCEL_SOURCE_properties_typeProperties_url')]"
+					},
+					"LS_JSON_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_JSON_SINK_properties_typeProperties_url')]"
+					},
+					"LS_JSON_SOURCE_properties_typeProperties_url": {
+						"value": "[parameters('LS_JSON_SOURCE_properties_typeProperties_url')]"
+					},
+					"LS_RESTAPI_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_RESTAPI_SINK_properties_typeProperties_url')]"
+					},
+					"LS_RESTAPI_SOURCE_properties_typeProperties_url": {
+						"value": "[parameters('LS_RESTAPI_SOURCE_properties_typeProperties_url')]"
+					},
+					"LS_SQLSERVER_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_SQLSERVER_SINK_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "ADF-VB-PROJECT-DEV_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_SQLSERVER_SOURCE_password": {
+						"value": "[parameters('LS_SQLSERVER_SOURCE_password')]"
+					},
+					"LS_SQLSERVER_SOURCE_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQLSERVER_SOURCE_properties_typeProperties_server')]"
+					},
+					"LS_SQLSERVER_SOURCE_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQLSERVER_SOURCE_properties_typeProperties_database')]"
+					},
+					"LS_SQLSERVER_SOURCE_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQLSERVER_SOURCE_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ADF-VB-PROJECT-DEV_ArmTemplate_0')]"
+			]
+		}
+	]
+}
