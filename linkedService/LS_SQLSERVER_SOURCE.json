@@ -11,10 +11,10 @@
 			"trustServerCertificate": true,
 			"authenticationType": "SQL",
 			"userName": "vblearning",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2YjQ4NTUxYS0xNWQxLTRkNzgtYmNhMi03Zjg3NjgxMThmNzEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJkMTMyNWUwNS02NTkyLTQzYjgtYTc3MS05N2VmN2NjMTVmYjIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
-			"referenceName": "integrationRuntime1",
+			"referenceName": "selfhosted-integrationRuntime",
 			"type": "IntegrationRuntimeReference"
 		}
 	}
