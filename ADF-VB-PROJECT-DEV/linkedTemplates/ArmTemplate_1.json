@@ -29,6 +29,112 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_JSON_SOURCE')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_JSON_SOURCE",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "json",
+						"fileSystem": "input"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"_id": {
+							"type": "string"
+						},
+						"index": {
+							"type": "integer"
+						},
+						"guid": {
+							"type": "string"
+						},
+						"isActive": {
+							"type": "boolean"
+						},
+						"balance": {
+							"type": "string"
+						},
+						"picture": {
+							"type": "string"
+						},
+						"age": {
+							"type": "integer"
+						},
+						"eyeColor": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						},
+						"gender": {
+							"type": "string"
+						},
+						"company": {
+							"type": "string"
+						},
+						"email": {
+							"type": "string"
+						},
+						"phone": {
+							"type": "string"
+						},
+						"address": {
+							"type": "string"
+						},
+						"about": {
+							"type": "string"
+						},
+						"registered": {
+							"type": "string"
+						},
+						"latitude": {
+							"type": "number"
+						},
+						"longitude": {
+							"type": "number"
+						},
+						"tags": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"friends": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"type": "integer"
+									},
+									"name": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"greeting": {
+							"type": "string"
+						},
+						"favoriteFruit": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_RESTAPI_SINK')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -158,7 +264,7 @@
 					}
 				},
 				"connectVia": {
-					"referenceName": "integrationRuntime1",
+					"referenceName": "selfhosted-integrationRuntime",
 					"type": "IntegrationRuntimeReference"
 				}
 			},
@@ -451,7 +557,9 @@
 				"annotations": [],
 				"lastPublishTime": "2025-12-28T14:12:02Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_JSON_SOURCE')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/PL_RestAPI')]",
@@ -528,6 +636,14 @@
 					"referenceName": "LS_SQLSERVER_SOURCE",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"schemaname": {
+						"type": "String"
+					},
+					"tablename": {
+						"type": "String"
+					}
+				},
 				"annotations": [],
 				"type": "SqlServerTable",
 				"schema": [
@@ -565,8 +681,14 @@
 					}
 				],
 				"typeProperties": {
-					"schema": "dbo",
-					"table": "olist_orders_dataset"
+					"schema": {
+						"value": "@dataset().schemaname",
+						"type": "Expression"
+					},
+					"table": {
+						"value": "@dataset().tablename",
+						"type": "Expression"
+					}
 				}
 			},
 			"dependsOn": [
@@ -620,7 +742,16 @@
 							{
 								"referenceName": "DS_SQLSERVER_SOURCE",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"schemaname": {
+										"value": "@pipeline().parameters.schemaname",
+										"type": "Expression"
+									},
+									"tablename": {
+										"value": "@pipeline().parameters.tablename",
+										"type": "Expression"
+									}
+								}
 							}
 						],
 						"outputs": [
@@ -636,11 +767,11 @@
 					"elapsedTimeMetric": {}
 				},
 				"parameters": {
-					"p_schemaname": {
-						"type": "String"
+					"schemaname": {
+						"type": "string"
 					},
-					"p_tablename": {
-						"type": "String"
+					"tablename": {
+						"type": "string"
 					}
 				},
 				"annotations": []
