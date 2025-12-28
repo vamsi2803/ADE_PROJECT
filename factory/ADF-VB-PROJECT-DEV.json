@@ -1,0 +1,9 @@
+{
+	"name": "ADF-VB-PROJECT-DEV",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "dfe4c2e5-6e06-4432-98a7-826a4203dfb7",
+		"tenantId": "700e899e-9dab-4729-a72a-2d4cdca7f32f"
+	}
+}
