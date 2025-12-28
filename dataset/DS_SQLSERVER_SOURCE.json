@@ -1,0 +1,63 @@
+{
+	"name": "DS_SQLSERVER_SOURCE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQLSERVER_SOURCE",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"schemaname": {
+				"type": "String"
+			},
+			"tablename": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "\"order_id\"",
+				"type": "varchar"
+			},
+			{
+				"name": "\"customer_id\"",
+				"type": "varchar"
+			},
+			{
+				"name": "\"order_status\"",
+				"type": "varchar"
+			},
+			{
+				"name": "\"order_purchase_timestamp\"",
+				"type": "varchar"
+			},
+			{
+				"name": "\"order_approved_at\"",
+				"type": "varchar"
+			},
+			{
+				"name": "\"order_delivered_carrier_date\"",
+				"type": "varchar"
+			},
+			{
+				"name": "\"order_delivered_customer_date\"",
+				"type": "varchar"
+			},
+			{
+				"name": "\"order_estimated_delivery_date\"",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schemaname",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().tablename",
+				"type": "Expression"
+			}
+		}
+	}
+}

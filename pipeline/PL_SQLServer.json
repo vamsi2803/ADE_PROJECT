@@ -42,7 +42,17 @@
 				"inputs": [
 					{
 						"referenceName": "DS_SQLSERVER_SOURCE",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"schemaname": {
+								"value": "@pipeline().parameters.schemaname",
+								"type": "Expression"
+							},
+							"tablename": {
+								"value": "@pipeline().parameters.tablename",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
@@ -54,11 +64,11 @@
 			}
 		],
 		"parameters": {
-			"p_schemaname": {
-				"type": "String"
+			"schemaname": {
+				"type": "string"
 			},
-			"p_tablename": {
-				"type": "String"
+			"tablename": {
+				"type": "string"
 			}
 		},
 		"annotations": []
