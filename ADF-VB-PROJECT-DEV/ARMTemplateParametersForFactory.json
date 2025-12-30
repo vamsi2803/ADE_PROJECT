@@ -29,6 +29,12 @@
 		"LS_CSV_SOURCE_accountKey": {
 			"value": ""
 		},
+		"LS_EVENT_TGR_SINK_accountKey": {
+			"value": ""
+		},
+		"LS_EVENT_TGR_SOURCE_accountKey": {
+			"value": ""
+		},
 		"LS_EXCEL_SINK_accountKey": {
 			"value": ""
 		},
@@ -48,12 +54,6 @@
 			"value": ""
 		},
 		"LS_SQLSERVER_SOURCE_password": {
-			"value": ""
-		},
-		"LS_EVENT_TGR_SOURCE_accountKey": {
-			"value": ""
-		},
-		"LS_EVENT_TGR_SINK_accountKey": {
 			"value": ""
 		},
 		"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_server": {
@@ -104,6 +104,12 @@
 		"LS_CSV_SOURCE_properties_typeProperties_url": {
 			"value": "https://adlsdevvbproraw001.dfs.core.windows.net/"
 		},
+		"LS_EVENT_TGR_SINK_properties_typeProperties_url": {
+			"value": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_EVENT_TGR_SOURCE_properties_typeProperties_url": {
+			"value": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		},
 		"LS_EXCEL_SINK_properties_typeProperties_url": {
 			"value": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
 		},
@@ -134,16 +140,19 @@
 		"LS_SQLSERVER_SOURCE_properties_typeProperties_userName": {
 			"value": "vblearning"
 		},
-		"LS_EVENT_TGR_SOURCE_properties_typeProperties_url": {
-			"value": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		"Event_Trigger_properties_EVENT_TGR_parameters_p_fileName": {
+			"value": "@trigger().outputs.body.fileName"
 		},
-		"LS_EVENT_TGR_SINK_properties_typeProperties_url": {
-			"value": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		"Event_Trigger_properties_EVENT_TGR_parameters_p_folderPath": {
+			"value": "@trigger().outputs.body.folderPath"
+		},
+		"Event_Trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
 		},
 		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 			"value": "Tr_sample_csv"
 		},
-		"Event_Trigger_properties_typeProperties_scope": {
+		"event_trigger_csv_properties_typeProperties_scope": {
 			"value": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
 		}
 	}

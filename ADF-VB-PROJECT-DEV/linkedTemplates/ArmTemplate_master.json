@@ -39,6 +39,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_CSV_SOURCE'"
 		},
+		"LS_EVENT_TGR_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_EVENT_TGR_SINK'"
+		},
+		"LS_EVENT_TGR_SOURCE_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_EVENT_TGR_SOURCE'"
+		},
 		"LS_EXCEL_SINK_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_EXCEL_SINK'"
@@ -66,14 +74,6 @@
 		"LS_SQLSERVER_SOURCE_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_SOURCE'"
-		},
-		"LS_EVENT_TGR_SOURCE_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_EVENT_TGR_SOURCE'"
-		},
-		"LS_EVENT_TGR_SINK_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_EVENT_TGR_SINK'"
 		},
 		"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_server": {
 			"type": "string",
@@ -139,6 +139,14 @@
 			"type": "string",
 			"defaultValue": "https://adlsdevvbproraw001.dfs.core.windows.net/"
 		},
+		"LS_EVENT_TGR_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_EVENT_TGR_SOURCE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		},
 		"LS_EXCEL_SINK_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
@@ -179,19 +187,23 @@
 			"type": "string",
 			"defaultValue": "vblearning"
 		},
-		"LS_EVENT_TGR_SOURCE_properties_typeProperties_url": {
+		"Event_Trigger_properties_EVENT_TGR_parameters_p_fileName": {
 			"type": "string",
-			"defaultValue": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+			"defaultValue": "@trigger().outputs.body.fileName"
 		},
-		"LS_EVENT_TGR_SINK_properties_typeProperties_url": {
+		"Event_Trigger_properties_EVENT_TGR_parameters_p_folderPath": {
 			"type": "string",
-			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+			"defaultValue": "@trigger().outputs.body.folderPath"
+		},
+		"Event_Trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
 		},
 		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 			"type": "string",
 			"defaultValue": "Tr_sample_csv"
 		},
-		"Event_Trigger_properties_typeProperties_scope": {
+		"event_trigger_csv_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
 		},
@@ -246,6 +258,12 @@
 					"LS_CSV_SOURCE_accountKey": {
 						"value": "[parameters('LS_CSV_SOURCE_accountKey')]"
 					},
+					"LS_EVENT_TGR_SINK_accountKey": {
+						"value": "[parameters('LS_EVENT_TGR_SINK_accountKey')]"
+					},
+					"LS_EVENT_TGR_SOURCE_accountKey": {
+						"value": "[parameters('LS_EVENT_TGR_SOURCE_accountKey')]"
+					},
 					"LS_EXCEL_SINK_accountKey": {
 						"value": "[parameters('LS_EXCEL_SINK_accountKey')]"
 					},
@@ -263,12 +281,6 @@
 					},
 					"LS_SQLSERVER_SINK_accountKey": {
 						"value": "[parameters('LS_SQLSERVER_SINK_accountKey')]"
-					},
-					"LS_EVENT_TGR_SOURCE_accountKey": {
-						"value": "[parameters('LS_EVENT_TGR_SOURCE_accountKey')]"
-					},
-					"LS_EVENT_TGR_SINK_accountKey": {
-						"value": "[parameters('LS_EVENT_TGR_SINK_accountKey')]"
 					},
 					"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_server": {
 						"value": "[parameters('DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_server')]"
@@ -318,6 +330,12 @@
 					"LS_CSV_SOURCE_properties_typeProperties_url": {
 						"value": "[parameters('LS_CSV_SOURCE_properties_typeProperties_url')]"
 					},
+					"LS_EVENT_TGR_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_EVENT_TGR_SINK_properties_typeProperties_url')]"
+					},
+					"LS_EVENT_TGR_SOURCE_properties_typeProperties_url": {
+						"value": "[parameters('LS_EVENT_TGR_SOURCE_properties_typeProperties_url')]"
+					},
 					"LS_EXCEL_SINK_properties_typeProperties_url": {
 						"value": "[parameters('LS_EXCEL_SINK_properties_typeProperties_url')]"
 					},
@@ -338,12 +356,6 @@
 					},
 					"LS_SQLSERVER_SINK_properties_typeProperties_url": {
 						"value": "[parameters('LS_SQLSERVER_SINK_properties_typeProperties_url')]"
-					},
-					"LS_EVENT_TGR_SOURCE_properties_typeProperties_url": {
-						"value": "[parameters('LS_EVENT_TGR_SOURCE_properties_typeProperties_url')]"
-					},
-					"LS_EVENT_TGR_SINK_properties_typeProperties_url": {
-						"value": "[parameters('LS_EVENT_TGR_SINK_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -395,8 +407,17 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"Event_Trigger_properties_EVENT_TGR_parameters_p_fileName": {
+						"value": "[parameters('Event_Trigger_properties_EVENT_TGR_parameters_p_fileName')]"
+					},
+					"Event_Trigger_properties_EVENT_TGR_parameters_p_folderPath": {
+						"value": "[parameters('Event_Trigger_properties_EVENT_TGR_parameters_p_folderPath')]"
+					},
 					"Event_Trigger_properties_typeProperties_scope": {
 						"value": "[parameters('Event_Trigger_properties_typeProperties_scope')]"
+					},
+					"event_trigger_csv_properties_typeProperties_scope": {
+						"value": "[parameters('event_trigger_csv_properties_typeProperties_scope')]"
 					},
 					"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 						"value": "[parameters('Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger')]"
