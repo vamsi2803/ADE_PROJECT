@@ -179,10 +179,6 @@
 			"type": "string",
 			"defaultValue": "vblearning"
 		},
-		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
-			"type": "string",
-			"defaultValue": "Tr_sample_csv"
-		},
 		"LS_EVENT_TGR_SOURCE_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevvbproraw001.dfs.core.windows.net/"
@@ -191,7 +187,11 @@
 			"type": "string",
 			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
 		},
-		"event_trigger_csv_properties_typeProperties_scope": {
+		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
+			"type": "string",
+			"defaultValue": "Tr_sample_csv"
+		},
+		"Event_Trigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
 		}
@@ -2309,38 +2309,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Tr_sample_csv')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "PL1_MASTER",
-							"type": "PipelineReference"
-						},
-						"parameters": {
-							"Trigger": "[parameters('Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger')]"
-						}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Day",
-						"interval": 1,
-						"startTime": "2025-12-30T23:00:00",
-						"timeZone": "India Standard Time"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/PL1_MASTER')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/integrationRuntime1')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
@@ -2567,12 +2535,44 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/event_trigger_csv')]",
+			"name": "[concat(parameters('factoryName'), '/Tr_sample_csv')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "PL1_MASTER",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"Trigger": "[parameters('Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2025-12-30T23:00:00",
+						"timeZone": "India Standard Time"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL1_MASTER')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Event_Trigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -2587,7 +2587,7 @@
 					"blobPathBeginsWith": "/input/blobs/csv",
 					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('event_trigger_csv_properties_typeProperties_scope')]",
+					"scope": "[parameters('Event_Trigger_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]
