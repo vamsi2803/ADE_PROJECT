@@ -1,0 +1,41 @@
+{
+	"name": "DS_EVENT_TGR_SINK",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_EVENT_TGR_SINK",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "event_trigger",
+				"fileSystem": "input"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "geolocation_zip_code_prefix",
+				"type": "UTF8"
+			},
+			{
+				"name": "geolocation_lat",
+				"type": "UTF8"
+			},
+			{
+				"name": "geolocation_lng",
+				"type": "UTF8"
+			},
+			{
+				"name": "geolocation_city",
+				"type": "UTF8"
+			},
+			{
+				"name": "geolocation_state",
+				"type": "UTF8"
+			}
+		]
+	}
+}
