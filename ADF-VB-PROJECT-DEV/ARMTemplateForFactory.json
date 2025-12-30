@@ -67,6 +67,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_SOURCE'"
 		},
+		"LS_EVENT_TGR_SOURCE_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_EVENT_TGR_SOURCE'"
+		},
+		"LS_EVENT_TGR_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_EVENT_TGR_SINK'"
+		},
 		"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "sql-srvr-vb-pro-dev1.database.windows.net"
@@ -174,6 +182,18 @@
 		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 			"type": "string",
 			"defaultValue": "Tr_sample_csv"
+		},
+		"LS_EVENT_TGR_SOURCE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		},
+		"LS_EVENT_TGR_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"event_trigger_csv_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
 		}
 	},
 	"variables": {
@@ -2339,6 +2359,243 @@
 				"typeProperties": {}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/EVENT_TGR')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "EVENT_TGR",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"wildcardFolderPath": "csv",
+									"wildcardFileName": "*",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "ParquetWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_EVENT_TGR_SOURCE",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_EVENT_TGR_SINK",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_EVENT_TGR_SOURCE')]",
+				"[concat(variables('factoryId'), '/datasets/DS_EVENT_TGR_SINK')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_EVENT_TGR_SOURCE')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_EVENT_TGR_SOURCE_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_EVENT_TGR_SOURCE_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_EVENT_TGR_SOURCE')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_EVENT_TGR_SOURCE",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "csv",
+						"fileSystem": "input"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "order_id",
+						"type": "String"
+					},
+					{
+						"name": "payment_sequential",
+						"type": "String"
+					},
+					{
+						"name": "payment_type",
+						"type": "String"
+					},
+					{
+						"name": "payment_installments",
+						"type": "String"
+					},
+					{
+						"name": "payment_value",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_EVENT_TGR_SOURCE')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_EVENT_TGR_SINK')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_EVENT_TGR_SINK_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_EVENT_TGR_SINK_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_EVENT_TGR_SINK')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_EVENT_TGR_SINK",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "event_trigger",
+						"fileSystem": "input"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "geolocation_zip_code_prefix",
+						"type": "UTF8"
+					},
+					{
+						"name": "geolocation_lat",
+						"type": "UTF8"
+					},
+					{
+						"name": "geolocation_lng",
+						"type": "UTF8"
+					},
+					{
+						"name": "geolocation_city",
+						"type": "UTF8"
+					},
+					{
+						"name": "geolocation_state",
+						"type": "UTF8"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_EVENT_TGR_SINK')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/event_trigger_csv')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "EVENT_TGR",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/input/blobs/csv",
+					"blobPathEndsWith": ".csv",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('event_trigger_csv_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/EVENT_TGR')]"
+			]
 		}
 	]
 }
