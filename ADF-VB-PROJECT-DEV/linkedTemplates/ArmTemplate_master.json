@@ -7,6 +7,22 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "ADF-VB-PROJECT-DEV"
 		},
+		"DS_AZSQLDB_CSV_EXCEL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'DS_AZSQLDB_CSV_EXCEL'"
+		},
+		"DS_AZSQLDB_CSV_META_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'DS_AZSQLDB_CSV_META'"
+		},
+		"LS_AZSQL_DB_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_AZSQL_DB'"
+		},
+		"LS_AZSQL_SRCDB_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_AZSQL_SRCDB'"
+		},
 		"LS_BULK_SINK_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_BULK_SINK'"
@@ -50,6 +66,54 @@
 		"LS_SQLSERVER_SOURCE_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_SOURCE'"
+		},
+		"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-pro-dev1.database.windows.net"
+		},
+		"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "access-data-dev"
+		},
+		"DS_AZSQLDB_CSV_META_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-pro-dev1.database.windows.net"
+		},
+		"DS_AZSQLDB_CSV_META_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"DS_AZSQLDB_CSV_META_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "access-data-dev"
+		},
+		"LS_AZSQL_DB_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-pro-dev1.database.windows.net"
+		},
+		"LS_AZSQL_DB_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"LS_AZSQL_DB_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "access-data-dev"
+		},
+		"LS_AZSQL_SRCDB_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-pro-dev1.database.windows.net"
+		},
+		"LS_AZSQL_SRCDB_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"LS_AZSQL_SRCDB_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "access-data-dev"
 		},
 		"LS_BULK_SINK_properties_typeProperties_url": {
 			"type": "string",
@@ -107,6 +171,10 @@
 			"type": "string",
 			"defaultValue": "vblearning"
 		},
+		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
+			"type": "string",
+			"defaultValue": "Tr_sample_csv"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -133,6 +201,18 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"DS_AZSQLDB_CSV_EXCEL_password": {
+						"value": "[parameters('DS_AZSQLDB_CSV_EXCEL_password')]"
+					},
+					"DS_AZSQLDB_CSV_META_password": {
+						"value": "[parameters('DS_AZSQLDB_CSV_META_password')]"
+					},
+					"LS_AZSQL_DB_password": {
+						"value": "[parameters('LS_AZSQL_DB_password')]"
+					},
+					"LS_AZSQL_SRCDB_password": {
+						"value": "[parameters('LS_AZSQL_SRCDB_password')]"
 					},
 					"LS_BULK_SINK_accountKey": {
 						"value": "[parameters('LS_BULK_SINK_accountKey')]"
@@ -163,6 +243,42 @@
 					},
 					"LS_SQLSERVER_SINK_accountKey": {
 						"value": "[parameters('LS_SQLSERVER_SINK_accountKey')]"
+					},
+					"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_server": {
+						"value": "[parameters('DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_server')]"
+					},
+					"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_database": {
+						"value": "[parameters('DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_database')]"
+					},
+					"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_userName": {
+						"value": "[parameters('DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_userName')]"
+					},
+					"DS_AZSQLDB_CSV_META_properties_typeProperties_server": {
+						"value": "[parameters('DS_AZSQLDB_CSV_META_properties_typeProperties_server')]"
+					},
+					"DS_AZSQLDB_CSV_META_properties_typeProperties_database": {
+						"value": "[parameters('DS_AZSQLDB_CSV_META_properties_typeProperties_database')]"
+					},
+					"DS_AZSQLDB_CSV_META_properties_typeProperties_userName": {
+						"value": "[parameters('DS_AZSQLDB_CSV_META_properties_typeProperties_userName')]"
+					},
+					"LS_AZSQL_DB_properties_typeProperties_server": {
+						"value": "[parameters('LS_AZSQL_DB_properties_typeProperties_server')]"
+					},
+					"LS_AZSQL_DB_properties_typeProperties_database": {
+						"value": "[parameters('LS_AZSQL_DB_properties_typeProperties_database')]"
+					},
+					"LS_AZSQL_DB_properties_typeProperties_userName": {
+						"value": "[parameters('LS_AZSQL_DB_properties_typeProperties_userName')]"
+					},
+					"LS_AZSQL_SRCDB_properties_typeProperties_server": {
+						"value": "[parameters('LS_AZSQL_SRCDB_properties_typeProperties_server')]"
+					},
+					"LS_AZSQL_SRCDB_properties_typeProperties_database": {
+						"value": "[parameters('LS_AZSQL_SRCDB_properties_typeProperties_database')]"
+					},
+					"LS_AZSQL_SRCDB_properties_typeProperties_userName": {
+						"value": "[parameters('LS_AZSQL_SRCDB_properties_typeProperties_userName')]"
 					},
 					"LS_BULK_SINK_properties_typeProperties_url": {
 						"value": "[parameters('LS_BULK_SINK_properties_typeProperties_url')]"
@@ -231,6 +347,29 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'ADF-VB-PROJECT-DEV_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "ADF-VB-PROJECT-DEV_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
+						"value": "[parameters('Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ADF-VB-PROJECT-DEV_ArmTemplate_1')]"
 			]
 		}
 	]

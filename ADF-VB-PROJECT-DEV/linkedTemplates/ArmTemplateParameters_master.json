@@ -5,6 +5,18 @@
 		"factoryName": {
 			"value": "ADF-VB-PROJECT-DEV"
 		},
+		"DS_AZSQLDB_CSV_EXCEL_password": {
+			"value": ""
+		},
+		"DS_AZSQLDB_CSV_META_password": {
+			"value": ""
+		},
+		"LS_AZSQL_DB_password": {
+			"value": ""
+		},
+		"LS_AZSQL_SRCDB_password": {
+			"value": ""
+		},
 		"LS_BULK_SINK_accountKey": {
 			"value": ""
 		},
@@ -37,6 +49,42 @@
 		},
 		"LS_SQLSERVER_SOURCE_password": {
 			"value": ""
+		},
+		"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_server": {
+			"value": "sql-srvr-vb-pro-dev1.database.windows.net"
+		},
+		"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_database": {
+			"value": "sql-db-vb-dev"
+		},
+		"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_userName": {
+			"value": "access-data-dev"
+		},
+		"DS_AZSQLDB_CSV_META_properties_typeProperties_server": {
+			"value": "sql-srvr-vb-pro-dev1.database.windows.net"
+		},
+		"DS_AZSQLDB_CSV_META_properties_typeProperties_database": {
+			"value": "sql-db-vb-dev"
+		},
+		"DS_AZSQLDB_CSV_META_properties_typeProperties_userName": {
+			"value": "access-data-dev"
+		},
+		"LS_AZSQL_DB_properties_typeProperties_server": {
+			"value": "sql-srvr-vb-pro-dev1.database.windows.net"
+		},
+		"LS_AZSQL_DB_properties_typeProperties_database": {
+			"value": "sql-db-vb-dev"
+		},
+		"LS_AZSQL_DB_properties_typeProperties_userName": {
+			"value": "access-data-dev"
+		},
+		"LS_AZSQL_SRCDB_properties_typeProperties_server": {
+			"value": "sql-srvr-vb-pro-dev1.database.windows.net"
+		},
+		"LS_AZSQL_SRCDB_properties_typeProperties_database": {
+			"value": "sql-db-vb-dev"
+		},
+		"LS_AZSQL_SRCDB_properties_typeProperties_userName": {
+			"value": "access-data-dev"
 		},
 		"LS_BULK_SINK_properties_typeProperties_url": {
 			"value": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
@@ -79,6 +127,9 @@
 		},
 		"LS_SQLSERVER_SOURCE_properties_typeProperties_userName": {
 			"value": "vblearning"
+		},
+		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
+			"value": "Tr_sample_csv"
 		},
 		"containerUri": {
 			"value": ""
