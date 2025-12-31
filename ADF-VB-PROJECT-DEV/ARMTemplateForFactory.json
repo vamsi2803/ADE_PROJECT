@@ -187,14 +187,6 @@
 			"type": "string",
 			"defaultValue": "vblearning"
 		},
-		"Event_Trigger_properties_EVENT_TGR_parameters_p_fileName": {
-			"type": "string",
-			"defaultValue": "@trigger().outputs.body.fileName"
-		},
-		"Event_Trigger_properties_EVENT_TGR_parameters_p_folderPath": {
-			"type": "string",
-			"defaultValue": "@trigger().outputs.body.folderPath"
-		},
 		"Event_Trigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
@@ -202,10 +194,6 @@
 		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 			"type": "string",
 			"defaultValue": "Tr_sample_csv"
-		},
-		"event_trigger_csv_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
 		}
 	},
 	"variables": {
@@ -237,7 +225,7 @@
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
 									"wildcardFolderPath": "csv",
-									"wildcardFileName": "*",
+									"wildcardFileName": "*.csv",
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -267,16 +255,7 @@
 							{
 								"referenceName": "DS_EVENT_TGR_SOURCE",
 								"type": "DatasetReference",
-								"parameters": {
-									"p_filename": {
-										"value": "@pipeline().parameters.p_fileName",
-										"type": "Expression"
-									},
-									"p_folderpath": {
-										"value": "@pipeline().parameters.p_folderPath",
-										"type": "Expression"
-									}
-								}
+								"parameters": {}
 							}
 						],
 						"outputs": [
@@ -290,14 +269,6 @@
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
-				},
-				"parameters": {
-					"p_fileName": {
-						"type": "string"
-					},
-					"p_folderPath": {
-						"type": "string"
-					}
 				},
 				"annotations": []
 			},
@@ -1723,27 +1694,13 @@
 					"referenceName": "LS_EVENT_TGR_SOURCE",
 					"type": "LinkedServiceReference"
 				},
-				"parameters": {
-					"p_filename": {
-						"type": "String"
-					},
-					"p_folderpath": {
-						"type": "String"
-					}
-				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": {
-							"value": "@dataset().p_filename",
-							"type": "Expression"
-						},
-						"fileSystem": {
-							"value": "@dataset().p_folderpath",
-							"type": "Expression"
-						}
+						"folderPath": "csv",
+						"fileSystem": "input"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -2570,10 +2527,7 @@
 							"referenceName": "EVENT_TGR",
 							"type": "PipelineReference"
 						},
-						"parameters": {
-							"p_fileName": "[parameters('Event_Trigger_properties_EVENT_TGR_parameters_p_fileName')]",
-							"p_folderPath": "[parameters('Event_Trigger_properties_EVENT_TGR_parameters_p_folderPath')]"
-						}
+						"parameters": {}
 					}
 				],
 				"type": "BlobEventsTrigger",
@@ -2621,37 +2575,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/PL1_MASTER')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/event_trigger_csv')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "EVENT_TGR",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/input/blobs/csv",
-					"blobPathEndsWith": ".csv",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('event_trigger_csv_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/EVENT_TGR')]"
 			]
 		},
 		{

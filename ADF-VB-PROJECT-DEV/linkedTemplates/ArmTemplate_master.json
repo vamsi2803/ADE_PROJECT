@@ -187,14 +187,6 @@
 			"type": "string",
 			"defaultValue": "vblearning"
 		},
-		"Event_Trigger_properties_EVENT_TGR_parameters_p_fileName": {
-			"type": "string",
-			"defaultValue": "@trigger().outputs.body.fileName"
-		},
-		"Event_Trigger_properties_EVENT_TGR_parameters_p_folderPath": {
-			"type": "string",
-			"defaultValue": "@trigger().outputs.body.folderPath"
-		},
 		"Event_Trigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
@@ -202,10 +194,6 @@
 		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 			"type": "string",
 			"defaultValue": "Tr_sample_csv"
-		},
-		"event_trigger_csv_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
 		},
 		"containerUri": {
 			"type": "string",
@@ -407,17 +395,8 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"Event_Trigger_properties_EVENT_TGR_parameters_p_fileName": {
-						"value": "[parameters('Event_Trigger_properties_EVENT_TGR_parameters_p_fileName')]"
-					},
-					"Event_Trigger_properties_EVENT_TGR_parameters_p_folderPath": {
-						"value": "[parameters('Event_Trigger_properties_EVENT_TGR_parameters_p_folderPath')]"
-					},
 					"Event_Trigger_properties_typeProperties_scope": {
 						"value": "[parameters('Event_Trigger_properties_typeProperties_scope')]"
-					},
-					"event_trigger_csv_properties_typeProperties_scope": {
-						"value": "[parameters('event_trigger_csv_properties_typeProperties_scope')]"
 					},
 					"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 						"value": "[parameters('Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger')]"

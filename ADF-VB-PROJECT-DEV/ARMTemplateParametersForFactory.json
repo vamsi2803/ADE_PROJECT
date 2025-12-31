@@ -140,20 +140,11 @@
 		"LS_SQLSERVER_SOURCE_properties_typeProperties_userName": {
 			"value": "vblearning"
 		},
-		"Event_Trigger_properties_EVENT_TGR_parameters_p_fileName": {
-			"value": "@trigger().outputs.body.fileName"
-		},
-		"Event_Trigger_properties_EVENT_TGR_parameters_p_folderPath": {
-			"value": "@trigger().outputs.body.folderPath"
-		},
 		"Event_Trigger_properties_typeProperties_scope": {
 			"value": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
 		},
 		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 			"value": "Tr_sample_csv"
-		},
-		"event_trigger_csv_properties_typeProperties_scope": {
-			"value": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
 		}
 	}
 }

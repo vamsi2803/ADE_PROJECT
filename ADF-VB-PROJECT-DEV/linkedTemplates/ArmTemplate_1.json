@@ -296,27 +296,13 @@
 					"referenceName": "LS_EVENT_TGR_SOURCE",
 					"type": "LinkedServiceReference"
 				},
-				"parameters": {
-					"p_filename": {
-						"type": "String"
-					},
-					"p_folderpath": {
-						"type": "String"
-					}
-				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": {
-							"value": "@dataset().p_filename",
-							"type": "Expression"
-						},
-						"fileSystem": {
-							"value": "@dataset().p_folderpath",
-							"type": "Expression"
-						}
+						"folderPath": "csv",
+						"fileSystem": "input"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -762,7 +748,7 @@
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
 									"wildcardFolderPath": "csv",
-									"wildcardFileName": "*",
+									"wildcardFileName": "*.csv",
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -792,16 +778,7 @@
 							{
 								"referenceName": "DS_EVENT_TGR_SOURCE",
 								"type": "DatasetReference",
-								"parameters": {
-									"p_filename": {
-										"value": "@pipeline().parameters.p_fileName",
-										"type": "Expression"
-									},
-									"p_folderpath": {
-										"value": "@pipeline().parameters.p_folderPath",
-										"type": "Expression"
-									}
-								}
+								"parameters": {}
 							}
 						],
 						"outputs": [
@@ -815,14 +792,6 @@
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
-				},
-				"parameters": {
-					"p_fileName": {
-						"type": "string"
-					},
-					"p_folderPath": {
-						"type": "string"
-					}
 				},
 				"annotations": []
 			},
