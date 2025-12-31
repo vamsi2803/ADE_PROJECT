@@ -3,18 +3,7 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [
-			{
-				"pipelineReference": {
-					"referenceName": "EVENT_TGR",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"p_fileName": "@trigger().outputs.body.fileName",
-					"p_folderPath": "@trigger().outputs.body.folderPath"
-				}
-			}
-		],
+		"pipelines": [],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/input/blobs/csv",
