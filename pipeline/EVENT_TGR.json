@@ -21,7 +21,7 @@
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
 							"wildcardFolderPath": "csv",
-							"wildcardFileName": "*",
+							"wildcardFileName": "*.csv",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -50,17 +50,7 @@
 				"inputs": [
 					{
 						"referenceName": "DS_EVENT_TGR_SOURCE",
-						"type": "DatasetReference",
-						"parameters": {
-							"p_filename": {
-								"value": "@pipeline().parameters.p_fileName",
-								"type": "Expression"
-							},
-							"p_folderpath": {
-								"value": "@pipeline().parameters.p_folderPath",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
@@ -71,14 +61,6 @@
 				]
 			}
 		],
-		"parameters": {
-			"p_fileName": {
-				"type": "string"
-			},
-			"p_folderPath": {
-				"type": "string"
-			}
-		},
 		"annotations": []
 	}
 }

@@ -5,27 +5,13 @@
 			"referenceName": "LS_EVENT_TGR_SOURCE",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"p_filename": {
-				"type": "String"
-			},
-			"p_folderpath": {
-				"type": "String"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": {
-					"value": "@dataset().p_filename",
-					"type": "Expression"
-				},
-				"fileSystem": {
-					"value": "@dataset().p_folderpath",
-					"type": "Expression"
-				}
+				"folderPath": "csv",
+				"fileSystem": "input"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
