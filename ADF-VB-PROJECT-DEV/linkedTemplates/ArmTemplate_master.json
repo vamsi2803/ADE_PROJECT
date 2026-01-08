@@ -39,6 +39,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_CSV_SOURCE'"
 		},
+		"LS_CSV_TST_SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_CSV_TST_SINK'"
+		},
+		"LS_CSV_TST_SOURCE_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_CSV_TST_SOURCE'"
+		},
 		"LS_EVENT_TGR_SINK_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_EVENT_TGR_SINK'"
@@ -74,6 +82,10 @@
 		"LS_SQLSERVER_SOURCE_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_SOURCE'"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://dev-key-vault-vb.vault.azure.net/"
 		},
 		"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_server": {
 			"type": "string",
@@ -139,6 +151,14 @@
 			"type": "string",
 			"defaultValue": "https://adlsdevvbproraw001.dfs.core.windows.net/"
 		},
+		"LS_CSV_TST_SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
+		},
+		"LS_CSV_TST_SOURCE_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbproraw001.dfs.core.windows.net/"
+		},
 		"LS_EVENT_TGR_SINK_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsdevvbprosrc001.dfs.core.windows.net/"
@@ -195,6 +215,14 @@
 			"type": "string",
 			"defaultValue": "Tr_sample_csv"
 		},
+		"evnt_tgr_properties_pipeline1_parameters_file_name": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"evnt_tgr_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -246,6 +274,12 @@
 					"LS_CSV_SOURCE_accountKey": {
 						"value": "[parameters('LS_CSV_SOURCE_accountKey')]"
 					},
+					"LS_CSV_TST_SINK_accountKey": {
+						"value": "[parameters('LS_CSV_TST_SINK_accountKey')]"
+					},
+					"LS_CSV_TST_SOURCE_accountKey": {
+						"value": "[parameters('LS_CSV_TST_SOURCE_accountKey')]"
+					},
 					"LS_EVENT_TGR_SINK_accountKey": {
 						"value": "[parameters('LS_EVENT_TGR_SINK_accountKey')]"
 					},
@@ -269,6 +303,9 @@
 					},
 					"LS_SQLSERVER_SINK_accountKey": {
 						"value": "[parameters('LS_SQLSERVER_SINK_accountKey')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
 					},
 					"DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_server": {
 						"value": "[parameters('DS_AZSQLDB_CSV_EXCEL_properties_typeProperties_server')]"
@@ -318,6 +355,12 @@
 					"LS_CSV_SOURCE_properties_typeProperties_url": {
 						"value": "[parameters('LS_CSV_SOURCE_properties_typeProperties_url')]"
 					},
+					"LS_CSV_TST_SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS_CSV_TST_SINK_properties_typeProperties_url')]"
+					},
+					"LS_CSV_TST_SOURCE_properties_typeProperties_url": {
+						"value": "[parameters('LS_CSV_TST_SOURCE_properties_typeProperties_url')]"
+					},
 					"LS_EVENT_TGR_SINK_properties_typeProperties_url": {
 						"value": "[parameters('LS_EVENT_TGR_SINK_properties_typeProperties_url')]"
 					},
@@ -362,18 +405,6 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"LS_SQLSERVER_SOURCE_password": {
-						"value": "[parameters('LS_SQLSERVER_SOURCE_password')]"
-					},
-					"LS_SQLSERVER_SOURCE_properties_typeProperties_server": {
-						"value": "[parameters('LS_SQLSERVER_SOURCE_properties_typeProperties_server')]"
-					},
-					"LS_SQLSERVER_SOURCE_properties_typeProperties_database": {
-						"value": "[parameters('LS_SQLSERVER_SOURCE_properties_typeProperties_database')]"
-					},
-					"LS_SQLSERVER_SOURCE_properties_typeProperties_userName": {
-						"value": "[parameters('LS_SQLSERVER_SOURCE_properties_typeProperties_userName')]"
 					}
 				}
 			},
@@ -395,8 +426,26 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"LS_SQLSERVER_SOURCE_password": {
+						"value": "[parameters('LS_SQLSERVER_SOURCE_password')]"
+					},
+					"LS_SQLSERVER_SOURCE_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQLSERVER_SOURCE_properties_typeProperties_server')]"
+					},
+					"LS_SQLSERVER_SOURCE_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQLSERVER_SOURCE_properties_typeProperties_database')]"
+					},
+					"LS_SQLSERVER_SOURCE_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQLSERVER_SOURCE_properties_typeProperties_userName')]"
+					},
 					"Event_Trigger_properties_typeProperties_scope": {
 						"value": "[parameters('Event_Trigger_properties_typeProperties_scope')]"
+					},
+					"evnt_tgr_properties_pipeline1_parameters_file_name": {
+						"value": "[parameters('evnt_tgr_properties_pipeline1_parameters_file_name')]"
+					},
+					"evnt_tgr_properties_typeProperties_scope": {
+						"value": "[parameters('evnt_tgr_properties_typeProperties_scope')]"
 					},
 					"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 						"value": "[parameters('Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger')]"
