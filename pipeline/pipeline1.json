@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Copy data Test",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -20,6 +20,8 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
+							"wildcardFolderPath": "csv",
+							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -47,13 +49,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_CSV_SOURCE",
+						"referenceName": "DS_CSV_TST_SOURCE",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_CSV_SINK",
+						"referenceName": "DS_CSV_TST_SINK",
 						"type": "DatasetReference"
 					}
 				]
