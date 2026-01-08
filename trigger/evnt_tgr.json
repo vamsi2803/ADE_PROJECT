@@ -6,7 +6,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "pipeline1",
+					"referenceName": "Copy data test",
 					"type": "PipelineReference"
 				},
 				"parameters": {
@@ -16,7 +16,7 @@
 		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
-			"blobPathBeginsWith": "/input/blobs/csv",
+			"blobPathBeginsWith": "/input/blobs/csv_test",
 			"blobPathEndsWith": ".csv",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/31104ceb-c187-41ae-a324-2dba52312d63/resourceGroups/VB_DEV_Project/providers/Microsoft.Storage/storageAccounts/adlsdevvbproraw001",
