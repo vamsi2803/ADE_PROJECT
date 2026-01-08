@@ -230,7 +230,10 @@
 							"type": "Int32"
 						},
 						"pipeline_id": {
-							"value": "@pipeline().RunId",
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
 							"type": "String"
 						}
 					}

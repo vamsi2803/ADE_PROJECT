@@ -1,45 +1,41 @@
 {
-	"name": "DS_CSV_SOURCE",
+	"name": "DS_CSV_TST_SINK",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_CSV_SOURCE",
+			"referenceName": "LS_CSV_TST_SINK",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
-		"type": "DelimitedText",
+		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": "csv",
 				"fileSystem": "input"
 			},
-			"columnDelimiter": ",",
-			"escapeChar": "\\",
-			"firstRowAsHeader": true,
-			"quoteChar": "\""
+			"compressionCodec": "snappy"
 		},
 		"schema": [
 			{
 				"name": "order_id",
-				"type": "String"
+				"type": "UTF8"
 			},
 			{
 				"name": "payment_sequential",
-				"type": "String"
+				"type": "UTF8"
 			},
 			{
 				"name": "payment_type",
-				"type": "String"
+				"type": "UTF8"
 			},
 			{
 				"name": "payment_installments",
-				"type": "String"
+				"type": "UTF8"
 			},
 			{
 				"name": "payment_value",
-				"type": "String"
+				"type": "UTF8"
 			}
 		]
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }
