@@ -333,7 +333,7 @@
 							"value": "@dataset().file_name",
 							"type": "Expression"
 						},
-						"folderPath": "csv",
+						"folderPath": "csv_test",
 						"fileSystem": "input"
 					},
 					"columnDelimiter": ",",
