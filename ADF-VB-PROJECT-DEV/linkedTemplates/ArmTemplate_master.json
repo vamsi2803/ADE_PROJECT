@@ -215,7 +215,7 @@
 			"type": "string",
 			"defaultValue": "Tr_sample_csv"
 		},
-		"evnt_tgr_properties_pipeline1_parameters_file_name": {
+		"evnt_tgr_properties_Copy data test_parameters_file_name": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
@@ -441,8 +441,8 @@
 					"Event_Trigger_properties_typeProperties_scope": {
 						"value": "[parameters('Event_Trigger_properties_typeProperties_scope')]"
 					},
-					"evnt_tgr_properties_pipeline1_parameters_file_name": {
-						"value": "[parameters('evnt_tgr_properties_pipeline1_parameters_file_name')]"
+					"evnt_tgr_properties_Copy data test_parameters_file_name": {
+						"value": "[parameters('evnt_tgr_properties_Copy data test_parameters_file_name')]"
 					},
 					"evnt_tgr_properties_typeProperties_scope": {
 						"value": "[parameters('evnt_tgr_properties_typeProperties_scope')]"

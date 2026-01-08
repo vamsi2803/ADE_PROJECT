@@ -161,7 +161,7 @@
 		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
 			"value": "Tr_sample_csv"
 		},
-		"evnt_tgr_properties_pipeline1_parameters_file_name": {
+		"evnt_tgr_properties_Copy data test_parameters_file_name": {
 			"value": "@triggerBody().fileName"
 		},
 		"evnt_tgr_properties_typeProperties_scope": {

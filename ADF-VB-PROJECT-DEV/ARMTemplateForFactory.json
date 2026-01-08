@@ -215,7 +215,7 @@
 			"type": "string",
 			"defaultValue": "Tr_sample_csv"
 		},
-		"evnt_tgr_properties_pipeline1_parameters_file_name": {
+		"evnt_tgr_properties_Copy data test_parameters_file_name": {
 			"type": "string",
 			"defaultValue": "@triggerBody().fileName"
 		},
@@ -1421,7 +1421,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"name": "[concat(parameters('factoryName'), '/Copy data test')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -2859,17 +2859,17 @@
 				"pipelines": [
 					{
 						"pipelineReference": {
-							"referenceName": "pipeline1",
+							"referenceName": "Copy data test",
 							"type": "PipelineReference"
 						},
 						"parameters": {
-							"file_name": "[parameters('evnt_tgr_properties_pipeline1_parameters_file_name')]"
+							"file_name": "[parameters('evnt_tgr_properties_Copy data test_parameters_file_name')]"
 						}
 					}
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/input/blobs/csv",
+					"blobPathBeginsWith": "/input/blobs/csv_test",
 					"blobPathEndsWith": ".csv",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('evnt_tgr_properties_typeProperties_scope')]",
@@ -2879,7 +2879,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline1')]"
+				"[concat(variables('factoryId'), '/pipelines/Copy data test')]"
 			]
 		},
 		{
