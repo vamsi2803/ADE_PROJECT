@@ -20,8 +20,6 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": "csv",
-							"wildcardFileName": "*",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -50,7 +48,13 @@
 				"inputs": [
 					{
 						"referenceName": "DS_CSV_TST_SOURCE",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"file_name": {
+								"value": "@pipeline().parameters.file_name",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
@@ -61,6 +65,11 @@
 				]
 			}
 		],
+		"parameters": {
+			"file_name": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"file_name": {
 				"type": "String"
